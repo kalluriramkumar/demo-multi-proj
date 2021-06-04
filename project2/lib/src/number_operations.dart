@@ -2,17 +2,25 @@ import 'package:project1/project1.dart';
 
 class NumberOperation implements NumberOperationsSpec {
   @override
-  int difference(int a, int b) {
+  int a = 5;
+
+  @override
+  int b = 2;
+
+  @override
+  int difference() {
     return a - b;
   }
 
   @override
-  int sum(int a, int b) {
+  int sum() {
     return a + b;
   }
 
   @override
-  int multiply(int a, int b) {
+  int multiply() {
     return (a * b);
   }
+
+
 }
