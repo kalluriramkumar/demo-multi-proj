@@ -13,6 +13,10 @@ jobs:
         with:
           sdk: stable
 
+      - name: Install dependencies in project1
+        working-directory: project1
+        run: dart pub get
+
       - name: Install dependencies in project2
         working-directory: project2
         run: dart pub get
