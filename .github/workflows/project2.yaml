@@ -1,0 +1,22 @@
+name: project2
+
+on: [ pull_request, push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies in project2
+        working-directory: project2
+        run: dart pub get
+
+      - name: Run tests in project2
+        working-directory: project2
+        run: dart test --concurrency=1
