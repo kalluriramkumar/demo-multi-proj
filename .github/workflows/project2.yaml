@@ -13,6 +13,24 @@ jobs:
         with:
           sdk: stable
 
+      # Setup python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      # Install python packages
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install ruamel.yaml
+
+      - name: Add dependency overrides
+        working-directory: project2
+        run: |
+          chmod +x add_dependency_overrides.py
+          python3 add_dependency_overrides.py
+
       - name: Install dependencies in project1
         working-directory: project1
         run: dart pub get
@@ -24,3 +42,9 @@ jobs:
       - name: Run tests in project2
         working-directory: project2
         run: dart test --concurrency=1
+
+      - name: Remove dependency overrides
+        working-directory: project2
+        run: |
+          chmod +x remove_dependency_overrides.py
+          python3 remove_dependency_overrides.py
