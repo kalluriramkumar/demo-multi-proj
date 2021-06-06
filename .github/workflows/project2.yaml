@@ -29,7 +29,7 @@ jobs:
         working-directory: project2
         run: |
           chmod +x add_dependency_overrides.py
-          python3 add_dependency_overrides.py
+          python3 add_dependency_overrides.py -b ${GITHUB_REF##*/}
 
       - name: Install dependencies in project1
         working-directory: project1
@@ -42,9 +42,3 @@ jobs:
       - name: Run tests in project2
         working-directory: project2
         run: dart test --concurrency=1
-
-      - name: Remove dependency overrides
-        working-directory: project2
-        run: |
-          chmod +x remove_dependency_overrides.py
-          python3 remove_dependency_overrides.py
