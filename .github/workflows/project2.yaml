@@ -26,7 +26,6 @@ jobs:
           pip3 install ruamel.yaml
 
       - name: Add dependency overrides
-        working-directory: project2
         run: |
           chmod +x add_dependency_overrides.py
           python3 add_dependency_overrides.py -b ${GITHUB_REF##*/}
