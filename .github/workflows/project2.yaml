@@ -8,11 +8,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
-
       # Setup python
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -29,6 +27,7 @@ jobs:
         run: |
           chmod +x add_dependency_overrides.py
           python3 add_dependency_overrides.py -b ${GITHUB_REF##*/}
+          echo ${GITHUB_REF##*/}
 
       - name: Install dependencies in project1
         working-directory: project1
