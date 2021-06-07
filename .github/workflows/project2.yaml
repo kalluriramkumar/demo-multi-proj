@@ -1,6 +1,6 @@
 name: project2
 
-on: [ pull_request ]
+on: [ pull_request, push ]
 
 jobs:
   build:
@@ -24,6 +24,7 @@ jobs:
           pip3 install ruamel.yaml
 
       - name: Add dependency overrides
+        if: ${{ github.event_name == 'pull_request' }}
         run: |
           chmod +x add_dependency_overrides.py
           python3 add_dependency_overrides.py -b ${{ github.head_ref }}
