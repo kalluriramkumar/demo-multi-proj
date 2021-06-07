@@ -26,8 +26,8 @@ jobs:
       - name: Add dependency overrides
         run: |
           chmod +x add_dependency_overrides.py
-          python3 add_dependency_overrides.py -b ${{ GITHUB_HEAD_REF }}
-          echo ${{ GITHUB_HEAD_REF }}
+          python3 add_dependency_overrides.py -b ${{ github.head_ref }}
+          echo ${{ github.head_ref }}
 
       - name: Install dependencies in project1
         working-directory: project1
