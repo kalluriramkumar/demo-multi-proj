@@ -8,9 +8,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
+
       # Setup python
       - name: Set up Python
         uses: actions/setup-python@v2
