@@ -1,6 +1,6 @@
 name: project2
 
-on: [ pull_request, push ]
+on: [ pull_request ]
 
 jobs:
   build:
@@ -26,8 +26,8 @@ jobs:
       - name: Add dependency overrides
         run: |
           chmod +x add_dependency_overrides.py
-          python3 add_dependency_overrides.py -b ${GITHUB_REF##*/}
-          echo ${GITHUB_REF##*/}
+          python3 add_dependency_overrides.py -b ${{ GITHUB_HEAD_REF }}
+          echo ${{ GITHUB_HEAD_REF }}
 
       - name: Install dependencies in project1
         working-directory: project1
