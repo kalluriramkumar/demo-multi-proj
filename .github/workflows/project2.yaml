@@ -1,6 +1,6 @@
 name: project2
 
-on: [ pull_request ]
+on: [ pull_request, push ]
 
 jobs:
   build:
@@ -8,26 +8,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
-      # Setup python
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
-
-      # Install python packages
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          pip3 install ruamel.yaml
-
-      - name: Add dependency overrides
-        run: |
-          chmod +x add_dependency_overrides.py
-          python3 add_dependency_overrides.py -b ${{ github.head_ref }}
-          echo ${{ github.head_ref }}
 
       - name: Install dependencies in project1
         working-directory: project1
