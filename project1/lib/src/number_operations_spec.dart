@@ -1,5 +1,9 @@
 abstract class NumberOperationsSpec {
-  int sum(int a, int b);
+  int a = 0;
+  int b = 0;
+  int sum();
 
-  int difference(int a, int b);
+  int difference();
+
+  int multiply();
 }
