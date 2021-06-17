@@ -9,7 +9,7 @@ void main() {
   });
 
   test('test substract numbers', () {
-    var diff = NumberOperation().sum(5, 2);
+    var diff = NumberOperation().difference(5, 2);
     expect(3, diff);
   });
 
