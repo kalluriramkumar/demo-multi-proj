@@ -30,12 +30,15 @@ jobs:
         run: dart test --concurrency=1
 
   merge:
+    needs: [build]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Remove dependency overrides
         working-directory: project2
         run: |
+          pwd
           chmod +x remove_dependency_overrides.dart
           dart run remove_dependency_overrides.dart
           cat pubspec.yaml
