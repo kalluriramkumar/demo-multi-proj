@@ -43,6 +43,7 @@ jobs:
         run: |
           pwd
           chmod +x remove_dependency_overrides.dart
+          dart pub get
           dart run remove_dependency_overrides.dart
           cat pubspec.yaml
           dart pub get
