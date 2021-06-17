@@ -14,7 +14,7 @@ void main() {
   });
 
   test('multiply',(){
-    var multiply = NumberOperation().difference(5, 2);
+    var multiply = NumberOperation().multiply(5, 2);
     expect(10, multiply);
   });
 }
