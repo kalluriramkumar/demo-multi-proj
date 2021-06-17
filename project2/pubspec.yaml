@@ -7,11 +7,16 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
+  json2yaml: ^1.0.1+1
   project1:
     git:
       url: https://github.com/kalluriramkumar/demo-multi-proj.git
       path: project1
       ref: main
+
+dependency_overrides:
+  project1:
+    path: ../project1
 
 dev_dependencies:
   pedantic: ^1.10.0
