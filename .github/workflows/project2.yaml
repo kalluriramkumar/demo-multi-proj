@@ -1,6 +1,10 @@
 name: project2
 
-on: [ pull_request, push ]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build:
@@ -24,3 +28,30 @@ jobs:
       - name: Run tests in project2
         working-directory: project2
         run: dart test --concurrency=1
+
+  merge:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove dependency overrides
+        working-directory: project2
+        run: |
+          chmod +x remove_dependency_overrides.dart
+          dart run remove_dependency_overrides.dart
+          cat pubspec.yaml
+          dart pub get
+
+      - name: setup git config
+        working-directory: project2
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        working-directory: project2
+        run: |
+          # Stage the file, commit and push
+          git add pubspec.yaml
+          git commit -m "remove dependency overrides"
+          git push

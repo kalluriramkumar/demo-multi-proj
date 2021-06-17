@@ -10,4 +10,10 @@ class NumberOperation implements NumberOperationsSpec {
   int sum(int a, int b) {
     return a + b;
   }
+
+  @override
+  int multiply(int a, int b) {
+    return a * b;
+  }
+
 }
