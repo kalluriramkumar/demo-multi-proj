@@ -4,8 +4,8 @@ import 'package:test/test.dart';
 
 void main() {
   test('test add numbers', () {
-    var sum = NumberOperation().sum(2, 2);
-    expect(4, sum);
+    var sum = NumberOperation().sum(2, 3);
+    expect(5, sum);
   });
 
   test('test substract numbers', () {
